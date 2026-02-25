@@ -110,6 +110,30 @@
             "Created .prettierignore for node_modules, .next, dist",
             "ESLint already configured by Next.js init"
           ]
+        },
+        {
+          "id": "P1-T7",
+          "name": "创建首页和功能菜单",
+          "description": "创建导航栏和首页，展示主要功能入口",
+          "status": "completed",
+          "dependencies": ["P1-T3"],
+          "estimatedHours": 3,
+          "actualHours": 0.5,
+          "startedAt": "2026-02-25T01:00:00Z",
+          "completedAt": "2026-02-25T01:30:00Z",
+          "steps": [
+            {"id": 1, "description": "创建导航栏组件 (Header)", "status": "completed"},
+            {"id": 2, "description": "创建首页功能卡片", "status": "completed"},
+            {"id": 3, "description": "更新layout添加导航栏", "status": "completed"},
+            {"id": 4, "description": "更新metadata标题", "status": "completed"}
+          ],
+          "log": [
+            "Created Header component with navigation links",
+            "Created homepage with feature cards (5 main features)",
+            "Added placeholder pages for all routes: /visualize, /convert, /library, /editor, /dictionary",
+            "Updated metadata title and description",
+            "Verified all pages return 200 status"
+          ]
         }
       ]
     },
