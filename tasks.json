@@ -146,9 +146,20 @@
           "id": "P2-T1",
           "name": "集成Three.js和React Three Fiber",
           "description": "安装three、@react-three/fiber、@react-three/drei",
-          "status": "pending",
+          "status": "completed",
           "dependencies": ["P1-T1"],
-          "estimatedHours": 2
+          "estimatedHours": 2,
+          "actualHours": 0.5,
+          "startedAt": "2026-02-25T02:00:00Z",
+          "completedAt": "2026-02-25T02:30:00Z",
+          "steps": [
+            {"id": 1, "description": "安装 three.js 依赖包", "status": "completed"},
+            {"id": 2, "description": "验证安装成功", "status": "completed"}
+          ],
+          "log": [
+            "Installed packages: three, @react-three/fiber, @react-three/drei",
+            "Verified build passes successfully"
+          ]
         },
         {
           "id": "P2-T2",
