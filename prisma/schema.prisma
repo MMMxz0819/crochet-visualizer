@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  patterns      Pattern[]
+  likes         PatternLike[]
+  comments      Comment[]
+  conversions   Conversion[]
+
+  @@map("users")
+}
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  icon        String?
+
+  patterns    Pattern[]
+
+  @@map("categories")
+}
+
+model Pattern {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  type        PatternType
+  grid        Json
+  metadata    Json
+  materials   Json?
+
+  categoryId  String?
+  category    Category?   @relation(fields: [categoryId], references: [id])
+
+  authorId    String
+  author      User        @relation(fields: [authorId], references: [id])
+
+  likes       PatternLike[]
+  comments    Comment[]
+  conversions Conversion[]
+
+  isPublic    Boolean     @default(true)
+  viewCount   Int         @default(0)
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([authorId])
+  @@index([categoryId])
+  @@map("patterns")
+}
+
+model PatternLike {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  patternId String
+  pattern   Pattern  @relation(fields: [patternId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, patternId])
+  @@index([patternId])
+  @@map("pattern_likes")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+
+  patternId String
+  pattern   Pattern  @relation(fields: [patternId], references: [id], onDelete: Cascade)
+
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([patternId])
+  @@map("comments")
+}
+
+model Conversion {
+  id           String            @id @default(cuid())
+  sourceImage  String
+  status       ConversionStatus  @default(PENDING)
+  result       Json?
+  confidence   Float?
+  errorMessage String?
+
+  userId       String
+  user         User              @relation(fields: [userId], references: [id])
+
+  patternId    String?
+  pattern      Pattern?          @relation(fields: [patternId], references: [id])
+
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@map("conversions")
+}
+
+enum PatternType {
+  SYMBOL
+  TEXT
+  MIXED
+}
+
+enum ConversionStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}

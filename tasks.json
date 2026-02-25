@@ -1,0 +1,410 @@
+{
+  "project": "钩针图解可视化网站",
+  "description": "将钩针图解与3D可视化相互转换的网站",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "基础架构搭建",
+      "duration": "Week 1",
+      "tasks": [
+        {
+          "id": "P1-T1",
+          "name": "初始化Next.js项目",
+          "description": "使用create-next-app初始化项目，配置TypeScript",
+          "status": "completed",
+          "dependencies": [],
+          "estimatedHours": 2,
+          "actualHours": 0.5,
+          "completedAt": "2026-02-25T00:15:00Z",
+          "log": [
+            "Created project directory: D:/crochet-visualizer",
+            "Initialized Next.js with TypeScript, Tailwind CSS, ESLint",
+            "Configured App Router with @/* import alias",
+            "Installed 359 npm packages",
+            "Initialized git repository"
+          ]
+        },
+        {
+          "id": "P1-T2",
+          "name": "配置Tailwind CSS",
+          "description": "安装并配置Tailwind CSS，设置自定义主题颜色",
+          "status": "completed",
+          "dependencies": ["P1-T1"],
+          "estimatedHours": 1,
+          "actualHours": 0.1,
+          "completedAt": "2026-02-25T00:25:00Z",
+          "log": [
+            "Tailwind CSS v4 already included with Next.js",
+            "Configuration in app/globals.css using @import 'tailwindcss'",
+            "Dark mode support configured"
+          ]
+        },
+        {
+          "id": "P1-T3",
+          "name": "配置shadcn/ui",
+          "description": "初始化shadcn/ui，安装基础组件库",
+          "status": "completed",
+          "dependencies": ["P1-T2"],
+          "estimatedHours": 2,
+          "actualHours": 0.5,
+          "startedAt": "2026-02-25T00:25:00Z",
+          "completedAt": "2026-02-25T00:35:00Z",
+          "log": [
+            "Initialized shadcn/ui with Next.js template",
+            "Installed 10 base components: button, card, input, dialog, dropdown-menu, tabs, tooltip, separator, avatar, badge",
+            "Created lib/utils.ts for cn() helper",
+            "Updated globals.css with CSS variables"
+          ]
+        },
+        {
+          "id": "P1-T4",
+          "name": "配置Prisma和数据库",
+          "description": "安装Prisma，配置PostgreSQL连接，创建基础schema",
+          "status": "completed",
+          "dependencies": ["P1-T1"],
+          "estimatedHours": 3,
+          "actualHours": 0.5,
+          "startedAt": "2026-02-25T00:36:00Z",
+          "completedAt": "2026-02-25T00:45:00Z",
+          "log": [
+            "Installed prisma and @prisma/client packages",
+            "Initialized Prisma with 'npx prisma init'",
+            "Created prisma/schema.prisma with full data models",
+            "Defined models: User, Category, Pattern, PatternLike, Comment, Conversion",
+            "Configured enums: PatternType, ConversionStatus"
+          ]
+        },
+        {
+          "id": "P1-T5",
+          "name": "创建项目目录结构",
+          "description": "按规划创建components、lib、types等目录",
+          "status": "completed",
+          "dependencies": ["P1-T1"],
+          "estimatedHours": 1,
+          "actualHours": 0.3,
+          "startedAt": "2026-02-25T00:36:00Z",
+          "completedAt": "2026-02-25T00:38:00Z",
+          "log": [
+            "Created components/crochet, components/three, components/convert, components/layout",
+            "Created hooks, stores, types directories",
+            "Created lib/crochet, lib/three directories",
+            "Created app/api/patterns, app/api/visualize, app/api/convert",
+            "Created app/(main)/visualize, convert, library, editor, dictionary",
+            "Created public/symbols, public/models directories",
+            "Created python-service directory"
+          ]
+        },
+        {
+          "id": "P1-T6",
+          "name": "配置ESLint和Prettier",
+          "description": "设置代码规范工具，统一代码风格",
+          "status": "completed",
+          "dependencies": ["P1-T1"],
+          "estimatedHours": 1,
+          "actualHours": 0.3,
+          "startedAt": "2026-02-25T00:36:00Z",
+          "completedAt": "2026-02-25T00:40:00Z",
+          "log": [
+            "Installed prettier, eslint-config-prettier, prettier-plugin-tailwindcss",
+            "Created .prettierrc with config: semi, singleQuote, tabWidth: 2, trailingComma: es5",
+            "Created .prettierignore for node_modules, .next, dist",
+            "ESLint already configured by Next.js init"
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "3D可视化核心开发",
+      "duration": "Week 2-3",
+      "tasks": [
+        {
+          "id": "P2-T1",
+          "name": "集成Three.js和React Three Fiber",
+          "description": "安装three、@react-three/fiber、@react-three/drei",
+          "status": "pending",
+          "dependencies": ["P1-T1"],
+          "estimatedHours": 2
+        },
+        {
+          "id": "P2-T2",
+          "name": "定义钩针类型系统",
+          "description": "创建TypeScript类型定义：StitchType、Pattern、StitchCell等",
+          "status": "pending",
+          "dependencies": ["P1-T5"],
+          "estimatedHours": 3
+        },
+        {
+          "id": "P2-T3",
+          "name": "创建基础针法3D模型",
+          "description": "为锁针(ch)、短针(sc)、长针(dc)创建基础3D几何体",
+          "status": "pending",
+          "dependencies": ["P2-T1", "P2-T2"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P2-T4",
+          "name": "实现针法材质系统",
+          "description": "创建线材材质，支持颜色切换和质感调整",
+          "status": "pending",
+          "dependencies": ["P2-T3"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P2-T5",
+          "name": "开发图解解析器",
+          "description": "将结构化图解数据解析为针法序列",
+          "status": "pending",
+          "dependencies": ["P2-T2"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P2-T6",
+          "name": "实现3D场景渲染器",
+          "description": "创建CrochetModel组件，渲染完整3D模型",
+          "status": "pending",
+          "dependencies": ["P2-T3", "P2-T5"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P2-T7",
+          "name": "添加3D交互功能",
+          "description": "实现旋转、缩放、平移、分层查看等交互",
+          "status": "pending",
+          "dependencies": ["P2-T6"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P2-T8",
+          "name": "创建3D可视化页面",
+          "description": "构建/visualize页面，集成所有3D功能",
+          "status": "pending",
+          "dependencies": ["P2-T7", "P1-T3"],
+          "estimatedHours": 4
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "图解编辑与管理",
+      "duration": "Week 4",
+      "tasks": [
+        {
+          "id": "P3-T1",
+          "name": "设计数据库Schema",
+          "description": "定义Pattern、User、Category等Prisma模型",
+          "status": "pending",
+          "dependencies": ["P1-T4"],
+          "estimatedHours": 3
+        },
+        {
+          "id": "P3-T2",
+          "name": "实现图解CRUD API",
+          "description": "创建/api/patterns下的增删改查接口",
+          "status": "pending",
+          "dependencies": ["P3-T1"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P3-T3",
+          "name": "开发图解网格组件",
+          "description": "创建可交互的网格化编辑界面",
+          "status": "pending",
+          "dependencies": ["P2-T2", "P1-T3"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P3-T4",
+          "name": "创建符号库组件",
+          "description": "实现可拖拽的针法符号库",
+          "status": "pending",
+          "dependencies": ["P3-T3"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P3-T5",
+          "name": "实现图解编辑器",
+          "description": "集成网格、符号库、颜色选择器的完整编辑器",
+          "status": "pending",
+          "dependencies": ["P3-T3", "P3-T4"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P3-T6",
+          "name": "开发图解库页面",
+          "description": "创建/library页面，展示所有图解",
+          "status": "pending",
+          "dependencies": ["P3-T2", "P1-T3"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P3-T7",
+          "name": "实现文件上传功能",
+          "description": "支持图片、PDF图解上传",
+          "status": "pending",
+          "dependencies": ["P3-T2"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P3-T8",
+          "name": "添加搜索和筛选",
+          "description": "实现按名称、难度、标签筛选图解",
+          "status": "pending",
+          "dependencies": ["P3-T6"],
+          "estimatedHours": 4
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "图片转图解功能",
+      "duration": "Week 5-6",
+      "tasks": [
+        {
+          "id": "P4-T1",
+          "name": "搭建Python服务",
+          "description": "使用FastAPI创建AI处理服务",
+          "status": "pending",
+          "dependencies": [],
+          "estimatedHours": 3
+        },
+        {
+          "id": "P4-T2",
+          "name": "实现图像预处理Pipeline",
+          "description": "灰度化、二值化、去噪、网格检测",
+          "status": "pending",
+          "dependencies": ["P4-T1"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P4-T3",
+          "name": "训练符号识别模型",
+          "description": "使用CNN训练钩针符号分类器",
+          "status": "pending",
+          "dependencies": ["P4-T2"],
+          "estimatedHours": 16
+        },
+        {
+          "id": "P4-T4",
+          "name": "实现符号分割算法",
+          "description": "分割图解中的各个符号单元格",
+          "status": "pending",
+          "dependencies": ["P4-T2"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P4-T5",
+          "name": "开发图解重建逻辑",
+          "description": "将识别结果转换为结构化图解数据",
+          "status": "pending",
+          "dependencies": ["P4-T3", "P4-T4"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P4-T6",
+          "name": "创建转换API接口",
+          "description": "实现/api/convert接口，连接Python服务",
+          "status": "pending",
+          "dependencies": ["P4-T5", "P3-T2"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P4-T7",
+          "name": "开发图片上传组件",
+          "description": "创建支持拖拽的图片上传界面",
+          "status": "pending",
+          "dependencies": ["P1-T3"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P4-T8",
+          "name": "创建转换结果预览页面",
+          "description": "构建/convert页面，展示识别结果和编辑功能",
+          "status": "pending",
+          "dependencies": ["P4-T6", "P4-T7", "P3-T5"],
+          "estimatedHours": 6
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "优化与完善",
+      "duration": "Week 7-8",
+      "tasks": [
+        {
+          "id": "P5-T1",
+          "name": "3D渲染性能优化",
+          "description": "LOD、实例化、Frustum Culling等优化",
+          "status": "pending",
+          "dependencies": ["P2-T8"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P5-T2",
+          "name": "创建针法字典",
+          "description": "为新手提供针法教程和示意图",
+          "status": "pending",
+          "dependencies": ["P1-T3"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P5-T3",
+          "name": "开发新手引导流程",
+          "description": "创建首次使用的交互式引导",
+          "status": "pending",
+          "dependencies": ["P2-T8", "P3-T6", "P4-T8"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P5-T4",
+          "name": "实现图解导出功能",
+          "description": "支持导出图片、PDF、结构化JSON",
+          "status": "pending",
+          "dependencies": ["P3-T5"],
+          "estimatedHours": 6
+        },
+        {
+          "id": "P5-T5",
+          "name": "添加颜色主题定制",
+          "description": "支持切换不同线材颜色预览",
+          "status": "pending",
+          "dependencies": ["P2-T4"],
+          "estimatedHours": 4
+        },
+        {
+          "id": "P5-T6",
+          "name": "响应式布局优化",
+          "description": "适配移动端和平板设备",
+          "status": "pending",
+          "dependencies": ["P2-T8", "P3-T6", "P4-T8"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P5-T7",
+          "name": "编写单元测试",
+          "description": "为核心模块编写测试用例",
+          "status": "pending",
+          "dependencies": ["P2-T8", "P3-T6", "P4-T8"],
+          "estimatedHours": 8
+        },
+        {
+          "id": "P5-T8",
+          "name": "用户测试和反馈收集",
+          "description": "邀请真实用户测试，收集改进意见",
+          "status": "pending",
+          "dependencies": ["P5-T3", "P5-T6"],
+          "estimatedHours": 4
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "totalPhases": 5,
+    "totalTasks": 38,
+    "totalEstimatedHours": 173,
+    "criticalPath": [
+      "P1-T1", "P1-T3", "P2-T1", "P2-T2", "P2-T3", "P2-T5", "P2-T6", "P2-T7", "P2-T8",
+      "P3-T3", "P3-T5", "P3-T6", "P4-T8", "P5-T3", "P5-T6"
+    ]
+  }
+}
